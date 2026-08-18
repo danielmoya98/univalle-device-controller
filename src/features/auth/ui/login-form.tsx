@@ -61,13 +61,13 @@ export function LoginForm() {
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.98 }}
         onClick={fillTestUser}
-        className="w-full flex items-center justify-between p-2.5 px-3.5 rounded-xl border border-indigo-200/80 dark:border-indigo-900/50 bg-indigo-50/60 dark:bg-indigo-950/30 text-indigo-900 dark:text-indigo-200 text-xs font-medium backdrop-blur-sm transition-all hover:bg-indigo-100 dark:hover:bg-indigo-900/40"
+        className="w-full flex items-center justify-between p-2.5 px-3.5 rounded-xl border border-indigo-300/30 bg-indigo-500/15 text-indigo-100 text-xs font-medium backdrop-blur-md transition-all hover:bg-indigo-500/25 shadow-sm"
       >
         <div className="flex items-center space-x-2">
-          <Sparkles className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400 animate-pulse" />
+          <Sparkles className="w-3.5 h-3.5 text-indigo-300 animate-pulse" />
           <span>Usuario de prueba:</span>
         </div>
-        <span className="font-semibold text-indigo-700 dark:text-indigo-300 underline">
+        <span className="font-semibold text-white underline">
           admin@univalle.edu.bo
         </span>
       </motion.button>
@@ -79,9 +79,9 @@ export function LoginForm() {
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              className="flex items-center space-x-2.5 p-3 rounded-xl border border-rose-200 dark:border-rose-900/50 bg-rose-50/90 dark:bg-rose-950/50 text-rose-800 dark:text-rose-200 text-xs font-medium"
+              className="flex items-center space-x-2.5 p-3 rounded-xl border border-rose-400/40 bg-rose-950/60 text-rose-100 text-xs font-medium backdrop-blur-md"
             >
-              <AlertCircle className="w-4 h-4 text-rose-500 shrink-0" />
+              <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
               <span>{serverError}</span>
             </motion.div>
           )}
@@ -90,68 +90,68 @@ export function LoginForm() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex items-center space-x-2.5 p-3 rounded-xl border border-emerald-200 dark:border-emerald-900/50 bg-emerald-50/90 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-200 text-xs font-medium"
+              className="flex items-center space-x-2.5 p-3 rounded-xl border border-emerald-400/40 bg-emerald-950/60 text-emerald-100 text-xs font-medium backdrop-blur-md"
             >
-              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>¡Autenticado con éxito! Redirigiendo...</span>
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* Email Input */}
-        <div className="space-y-1.5">
-          <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
+        <div className="space-y-1.5 text-left">
+          <label className="block text-xs font-medium text-slate-200">
             Correo institucional
           </label>
           <div className="relative flex items-center">
-            <div className="absolute left-3.5 text-slate-400 dark:text-slate-500 pointer-events-none">
+            <div className="absolute left-3.5 text-slate-300 pointer-events-none">
               <Mail className="w-4 h-4" />
             </div>
             <input
               type="email"
               placeholder="usuario@univalle.edu.bo"
-              className={`w-full rounded-xl border bg-white dark:bg-slate-900/90 px-4 py-2.5 pl-10 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500/50 ${
+              className={`w-full rounded-xl border bg-slate-950/40 backdrop-blur-md px-4 py-2.5 pl-10 text-sm text-white placeholder-slate-400 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400/60 ${
                 errors.email
-                  ? 'border-rose-500 dark:border-rose-500 focus:ring-rose-500/50'
-                  : 'border-slate-200 dark:border-slate-800 focus:border-indigo-500'
+                  ? 'border-rose-500 focus:ring-rose-500/50'
+                  : 'border-white/20 focus:border-indigo-400'
               }`}
               {...register('email')}
             />
           </div>
           {errors.email && (
-            <p className="text-xs text-rose-500 font-medium pl-1">{errors.email.message}</p>
+            <p className="text-xs text-rose-400 font-medium pl-1">{errors.email.message}</p>
           )}
         </div>
 
         {/* Password Input */}
-        <div className="space-y-1.5">
-          <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">
+        <div className="space-y-1.5 text-left">
+          <label className="block text-xs font-medium text-slate-200">
             Contraseña
           </label>
           <div className="relative flex items-center">
-            <div className="absolute left-3.5 text-slate-400 dark:text-slate-500 pointer-events-none">
+            <div className="absolute left-3.5 text-slate-300 pointer-events-none">
               <Lock className="w-4 h-4" />
             </div>
             <input
               type={showPassword ? 'text' : 'password'}
               placeholder="••••••••••••"
-              className={`w-full rounded-xl border bg-white dark:bg-slate-900/90 px-4 py-2.5 pl-10 pr-10 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500/50 ${
+              className={`w-full rounded-xl border bg-slate-950/40 backdrop-blur-md px-4 py-2.5 pl-10 pr-10 text-sm text-white placeholder-slate-400 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400/60 ${
                 errors.password
-                  ? 'border-rose-500 dark:border-rose-500 focus:ring-rose-500/50'
-                  : 'border-slate-200 dark:border-slate-800 focus:border-indigo-500'
+                  ? 'border-rose-500 focus:ring-rose-500/50'
+                  : 'border-white/20 focus:border-indigo-400'
               }`}
               {...register('password')}
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors focus:outline-none"
+              className="absolute right-3.5 text-slate-300 hover:text-white transition-colors focus:outline-none"
             >
               {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
             </button>
           </div>
           {errors.password && (
-            <p className="text-xs text-rose-500 font-medium pl-1">{errors.password.message}</p>
+            <p className="text-xs text-rose-400 font-medium pl-1">{errors.password.message}</p>
           )}
         </div>
 
@@ -162,9 +162,9 @@ export function LoginForm() {
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-indigo-600 focus:ring-indigo-500 dark:bg-slate-900 dark:checked:bg-indigo-600 transition-colors"
+              className="w-4 h-4 rounded border-white/30 text-indigo-500 focus:ring-indigo-400 bg-slate-900/60 transition-colors"
             />
-            <span className="text-slate-700 dark:text-slate-300 font-medium">Recordarme</span>
+            <span className="text-slate-200 font-medium">Recordarme</span>
           </label>
 
           <a
@@ -173,7 +173,7 @@ export function LoginForm() {
               e.preventDefault();
               alert('Contacta al administrador para restablecer tu contraseña.');
             }}
-            className="text-indigo-600 dark:text-indigo-400 hover:underline font-semibold transition-colors"
+            className="text-indigo-300 hover:text-white hover:underline font-semibold transition-colors"
           >
             ¿Olvidaste tu contraseña?
           </a>
@@ -186,7 +186,7 @@ export function LoginForm() {
             whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
             whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
             disabled={isSubmitting}
-            className="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-medium text-sm shadow-md shadow-indigo-600/25 flex items-center justify-center space-x-2 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500/50 disabled:opacity-50"
+            className="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-semibold text-sm shadow-lg shadow-indigo-600/40 flex items-center justify-center space-x-2 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400/60 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center space-x-2">
@@ -208,8 +208,8 @@ export function LoginForm() {
 
       {/* Divider */}
       <div className="relative flex items-center justify-center my-4">
-        <div className="w-full border-t border-slate-200 dark:border-slate-800" />
-        <span className="absolute bg-white dark:bg-slate-900 px-3 text-[11px] font-medium text-slate-400 dark:text-slate-500">
+        <div className="w-full border-t border-white/20" />
+        <span className="absolute bg-slate-900/80 backdrop-blur-md px-3 text-[11px] font-medium text-slate-300 rounded-full">
           o continúa con
         </span>
       </div>
@@ -220,7 +220,7 @@ export function LoginForm() {
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.98 }}
         onClick={() => alert('Autenticación con Google disponible para dominio @univalle.edu.bo')}
-        className="w-full py-2.5 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-200 font-medium text-sm flex items-center justify-center space-x-2.5 transition-all shadow-sm focus:outline-none"
+        className="w-full py-2.5 px-4 rounded-xl border border-white/20 bg-slate-900/40 hover:bg-slate-900/60 backdrop-blur-md text-white font-medium text-sm flex items-center justify-center space-x-2.5 transition-all shadow-sm focus:outline-none"
       >
         <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
           <path
@@ -244,8 +244,8 @@ export function LoginForm() {
       </motion.button>
 
       {/* Security badge at bottom */}
-      <div className="pt-2 flex items-center justify-center space-x-1.5 text-[11px] font-medium text-slate-400 dark:text-slate-500">
-        <ShieldCheck className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
+      <div className="pt-2 flex items-center justify-center space-x-1.5 text-[11px] font-medium text-slate-300">
+        <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
         <span>Sistema seguro y protegido</span>
       </div>
     </div>
