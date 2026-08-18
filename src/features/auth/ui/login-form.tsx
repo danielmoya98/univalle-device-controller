@@ -55,19 +55,19 @@ export function LoginForm() {
 
   return (
     <div className="w-full space-y-5">
-      {/* Test User Quick Autofill Badge with Frosted Glow */}
+      {/* Test User Quick Autofill Badge (Burgundy #7A001E Accent) */}
       <motion.button
         type="button"
         whileHover={{ scale: 1.015 }}
         whileTap={{ scale: 0.98 }}
         onClick={fillTestUser}
-        className="w-full flex items-center justify-between p-3 px-4 rounded-2xl border border-red-400/40 bg-gradient-to-r from-red-500/20 via-rose-500/15 to-indigo-500/20 text-red-100 text-xs font-medium backdrop-blur-2xl transition-all duration-300 hover:border-red-400/60 hover:bg-red-500/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
+        className="w-full flex items-center justify-between p-3 px-4 rounded-2xl border border-[#7A001E]/30 dark:border-red-400/40 bg-[#7A001E]/10 dark:bg-red-500/20 text-[#7A001E] dark:text-red-100 text-xs font-medium backdrop-blur-2xl transition-all duration-300 hover:bg-[#7A001E]/20 dark:hover:bg-red-500/30 shadow-sm"
       >
         <div className="flex items-center space-x-2">
-          <Sparkles className="w-4 h-4 text-red-400 animate-pulse" />
+          <Sparkles className="w-4 h-4 text-[#7A001E] dark:text-red-400 animate-pulse" />
           <span>Usuario de prueba:</span>
         </div>
-        <span className="font-bold text-white underline decoration-red-400 underline-offset-2">
+        <span className="font-bold text-[#7A001E] dark:text-white underline decoration-[#7A001E] dark:decoration-red-400 underline-offset-2">
           admin@univalle.edu.bo
         </span>
       </motion.button>
@@ -79,9 +79,9 @@ export function LoginForm() {
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              className="flex items-center space-x-2.5 p-3.5 rounded-2xl border border-rose-400/50 bg-rose-950/80 text-rose-100 text-xs font-medium backdrop-blur-2xl shadow-xl"
+              className="flex items-center space-x-2.5 p-3.5 rounded-2xl border border-rose-500/40 bg-rose-50 dark:bg-rose-950/80 text-rose-800 dark:text-rose-100 text-xs font-medium backdrop-blur-2xl shadow-xl"
             >
-              <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+              <AlertCircle className="w-4 h-4 text-rose-500 dark:text-rose-400 shrink-0" />
               <span>{serverError}</span>
             </motion.div>
           )}
@@ -90,68 +90,68 @@ export function LoginForm() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex items-center space-x-2.5 p-3.5 rounded-2xl border border-emerald-400/50 bg-emerald-950/80 text-emerald-100 text-xs font-medium backdrop-blur-2xl shadow-xl"
+              className="flex items-center space-x-2.5 p-3.5 rounded-2xl border border-emerald-500/40 bg-emerald-50 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-100 text-xs font-medium backdrop-blur-2xl shadow-xl"
             >
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <span>¡Autenticado con éxito! Redirigiendo...</span>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Email Carved Frosted Glass Input */}
+        {/* Email Input */}
         <div className="space-y-1.5 text-left">
-          <label className="block text-xs font-semibold text-slate-200 tracking-wide">
+          <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 tracking-wide">
             Correo institucional
           </label>
           <div className="relative flex items-center group">
-            <div className="absolute left-4 text-slate-400 group-focus-within:text-red-400 transition-colors pointer-events-none">
+            <div className="absolute left-4 text-slate-400 group-focus-within:text-[#7A001E] dark:group-focus-within:text-red-400 transition-colors pointer-events-none">
               <Mail className="w-4 h-4" />
             </div>
             <input
               type="email"
               placeholder="usuario@univalle.edu.bo"
-              className={`w-full rounded-2xl border bg-slate-950/50 backdrop-blur-2xl px-4 py-3 pl-11 text-sm text-white placeholder-slate-400/70 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-red-500/20 shadow-[inset_0_2px_4px_rgba(0,0,0,0.4),_0_1px_0_rgba(255,255,255,0.1)] ${
+              className={`w-full rounded-2xl border bg-white/80 dark:bg-slate-950/50 backdrop-blur-2xl px-4 py-3 pl-11 text-sm text-slate-900 dark:text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#7A001E]/20 dark:focus:ring-red-500/20 shadow-inner ${
                 errors.email
                   ? 'border-rose-500 focus:ring-rose-500/30'
-                  : 'border-white/20 hover:border-white/35 focus:border-red-500 focus:bg-slate-950/70'
+                  : 'border-slate-200/90 dark:border-white/20 hover:border-slate-300 dark:hover:border-white/35 focus:border-[#7A001E] dark:focus:border-red-500'
               }`}
               {...register('email')}
             />
           </div>
           {errors.email && (
-            <p className="text-xs text-rose-400 font-medium pl-1">{errors.email.message}</p>
+            <p className="text-xs text-rose-500 dark:text-rose-400 font-medium pl-1">{errors.email.message}</p>
           )}
         </div>
 
-        {/* Password Carved Frosted Glass Input */}
+        {/* Password Input */}
         <div className="space-y-1.5 text-left">
-          <label className="block text-xs font-semibold text-slate-200 tracking-wide">
+          <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 tracking-wide">
             Contraseña
           </label>
           <div className="relative flex items-center group">
-            <div className="absolute left-4 text-slate-400 group-focus-within:text-red-400 transition-colors pointer-events-none">
+            <div className="absolute left-4 text-slate-400 group-focus-within:text-[#7A001E] dark:group-focus-within:text-red-400 transition-colors pointer-events-none">
               <Lock className="w-4 h-4" />
             </div>
             <input
               type={showPassword ? 'text' : 'password'}
               placeholder="••••••••••••"
-              className={`w-full rounded-2xl border bg-slate-950/50 backdrop-blur-2xl px-4 py-3 pl-11 pr-11 text-sm text-white placeholder-slate-400/70 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-red-500/20 shadow-[inset_0_2px_4px_rgba(0,0,0,0.4),_0_1px_0_rgba(255,255,255,0.1)] ${
+              className={`w-full rounded-2xl border bg-white/80 dark:bg-slate-950/50 backdrop-blur-2xl px-4 py-3 pl-11 pr-11 text-sm text-slate-900 dark:text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#7A001E]/20 dark:focus:ring-red-500/20 shadow-inner ${
                 errors.password
                   ? 'border-rose-500 focus:ring-rose-500/30'
-                  : 'border-white/20 hover:border-white/35 focus:border-red-500 focus:bg-slate-950/70'
+                  : 'border-slate-200/90 dark:border-white/20 hover:border-slate-300 dark:hover:border-white/35 focus:border-[#7A001E] dark:focus:border-red-500'
               }`}
               {...register('password')}
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 text-slate-400 hover:text-white transition-colors focus:outline-none"
+              className="absolute right-4 text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors focus:outline-none"
             >
               {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
             </button>
           </div>
           {errors.password && (
-            <p className="text-xs text-rose-400 font-medium pl-1">{errors.password.message}</p>
+            <p className="text-xs text-rose-500 dark:text-rose-400 font-medium pl-1">{errors.password.message}</p>
           )}
         </div>
 
@@ -162,9 +162,9 @@ export function LoginForm() {
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              className="w-4 h-4 rounded-md border-white/30 text-red-600 focus:ring-red-500 bg-slate-950/60 transition-colors cursor-pointer"
+              className="w-4 h-4 rounded-md border-slate-300 dark:border-white/30 text-[#7A001E] dark:text-red-600 focus:ring-[#7A001E] dark:focus:ring-red-500 bg-white dark:bg-slate-950/60 transition-colors cursor-pointer"
             />
-            <span className="text-slate-200 font-medium">Recordarme</span>
+            <span className="text-slate-700 dark:text-slate-200 font-medium">Recordarme</span>
           </label>
 
           <a
@@ -173,20 +173,20 @@ export function LoginForm() {
               e.preventDefault();
               alert('Contacta al administrador para restablecer tu contraseña.');
             }}
-            className="text-red-300 hover:text-white hover:underline font-semibold transition-colors"
+            className="text-[#7A001E] dark:text-red-300 hover:underline font-semibold transition-colors"
           >
             ¿Olvidaste tu contraseña?
           </a>
         </div>
 
-        {/* Primary Glowing Crimson Red Submit Button */}
+        {/* Primary Univalle Burgundy Submit Button */}
         <div className="pt-2">
           <motion.button
             type="submit"
             whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
             whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
             disabled={isSubmitting}
-            className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-sm shadow-[0_10px_30px_-5px_rgba(225,29,72,0.6)] hover:shadow-[0_15px_35px_-5px_rgba(225,29,72,0.8)] border border-white/20 flex items-center justify-center space-x-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-red-400/40 disabled:opacity-50"
+            className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-[#7A001E] via-[#990024] to-[#7A001E] hover:from-[#600018] hover:to-[#800020] text-white font-bold text-sm shadow-[0_10px_25px_-5px_rgba(122,0,30,0.45)] flex items-center justify-center space-x-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#7A001E]/40 disabled:opacity-50 border border-white/20"
           >
             {isSubmitting ? (
               <div className="flex items-center space-x-2">
@@ -208,19 +208,19 @@ export function LoginForm() {
 
       {/* Divider */}
       <div className="relative flex items-center justify-center my-5">
-        <div className="w-full border-t border-white/15" />
-        <span className="absolute bg-slate-950/80 backdrop-blur-2xl px-3.5 py-0.5 text-[11px] font-semibold text-slate-300 rounded-full border border-white/15 shadow-sm">
+        <div className="w-full border-t border-slate-200/80 dark:border-white/15" />
+        <span className="absolute bg-white/90 dark:bg-slate-950/80 backdrop-blur-2xl px-3.5 py-0.5 text-[11px] font-semibold text-slate-500 dark:text-slate-300 rounded-full border border-slate-200 dark:border-white/15 shadow-sm">
           o continúa con
         </span>
       </div>
 
-      {/* Ultra-Sleek Glass Google Login Button */}
+      {/* Google Login Button */}
       <motion.button
         type="button"
         whileHover={{ scale: 1.015 }}
         whileTap={{ scale: 0.98 }}
         onClick={() => alert('Autenticación con Google disponible para dominio @univalle.edu.bo')}
-        className="w-full py-3.5 px-4 rounded-2xl border border-white/20 bg-white/[0.08] hover:bg-white/[0.16] backdrop-blur-2xl text-white font-semibold text-sm flex items-center justify-center space-x-2.5 transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),_0_8px_20px_rgba(0,0,0,0.3)] focus:outline-none"
+        className="w-full py-3.5 px-4 rounded-2xl border border-slate-200 dark:border-white/20 bg-white/90 hover:bg-white dark:bg-white/[0.08] dark:hover:bg-white/[0.16] backdrop-blur-2xl text-slate-700 dark:text-white font-semibold text-sm flex items-center justify-center space-x-2.5 transition-all duration-300 shadow-sm focus:outline-none"
       >
         <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
           <path
@@ -243,9 +243,9 @@ export function LoginForm() {
         <span>Iniciar sesión con Google</span>
       </motion.button>
 
-      {/* Security badge */}
-      <div className="pt-2 flex items-center justify-center space-x-1.5 text-[11px] font-medium text-slate-300">
-        <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+      {/* Security Badge */}
+      <div className="pt-2 flex items-center justify-center space-x-1.5 text-[11px] font-medium text-slate-500 dark:text-slate-300">
+        <ShieldCheck className="w-3.5 h-3.5 text-[#7A001E] dark:text-emerald-400" />
         <span>Sistema seguro y protegido</span>
       </div>
     </div>
