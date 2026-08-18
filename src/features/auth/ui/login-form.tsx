@@ -55,19 +55,19 @@ export function LoginForm() {
 
   return (
     <div className="w-full space-y-5">
-      {/* Test User Quick Autofill */}
+      {/* Test User Quick Autofill Badge */}
       <motion.button
         type="button"
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.98 }}
         onClick={fillTestUser}
-        className="w-full flex items-center justify-between p-2.5 px-3.5 rounded-xl border border-indigo-300/30 bg-indigo-500/15 text-indigo-100 text-xs font-medium backdrop-blur-md transition-all hover:bg-indigo-500/25 shadow-sm"
+        className="w-full flex items-center justify-between p-2.5 px-3.5 rounded-2xl border border-red-400/35 bg-red-500/15 text-red-100 text-xs font-medium backdrop-blur-xl transition-all hover:bg-red-500/25 shadow-sm"
       >
         <div className="flex items-center space-x-2">
-          <Sparkles className="w-3.5 h-3.5 text-indigo-300 animate-pulse" />
+          <Sparkles className="w-3.5 h-3.5 text-red-400 animate-pulse" />
           <span>Usuario de prueba:</span>
         </div>
-        <span className="font-semibold text-white underline">
+        <span className="font-bold text-white underline decoration-red-400 underline-offset-2">
           admin@univalle.edu.bo
         </span>
       </motion.button>
@@ -79,7 +79,7 @@ export function LoginForm() {
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              className="flex items-center space-x-2.5 p-3 rounded-xl border border-rose-400/40 bg-rose-950/60 text-rose-100 text-xs font-medium backdrop-blur-md"
+              className="flex items-center space-x-2.5 p-3 rounded-2xl border border-rose-400/50 bg-rose-950/70 text-rose-100 text-xs font-medium backdrop-blur-md shadow-lg"
             >
               <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
               <span>{serverError}</span>
@@ -90,7 +90,7 @@ export function LoginForm() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex items-center space-x-2.5 p-3 rounded-xl border border-emerald-400/40 bg-emerald-950/60 text-emerald-100 text-xs font-medium backdrop-blur-md"
+              className="flex items-center space-x-2.5 p-3 rounded-2xl border border-emerald-400/50 bg-emerald-950/70 text-emerald-100 text-xs font-medium backdrop-blur-md shadow-lg"
             >
               <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>¡Autenticado con éxito! Redirigiendo...</span>
@@ -100,20 +100,20 @@ export function LoginForm() {
 
         {/* Email Input */}
         <div className="space-y-1.5 text-left">
-          <label className="block text-xs font-medium text-slate-200">
+          <label className="block text-xs font-semibold text-slate-200 tracking-wide">
             Correo institucional
           </label>
           <div className="relative flex items-center">
-            <div className="absolute left-3.5 text-slate-300 pointer-events-none">
+            <div className="absolute left-3.5 text-slate-400 pointer-events-none">
               <Mail className="w-4 h-4" />
             </div>
             <input
               type="email"
               placeholder="usuario@univalle.edu.bo"
-              className={`w-full rounded-xl border bg-slate-950/40 backdrop-blur-md px-4 py-2.5 pl-10 text-sm text-white placeholder-slate-400 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400/60 ${
+              className={`w-full rounded-2xl border bg-slate-950/45 backdrop-blur-xl px-4 py-3 pl-10 text-sm text-white placeholder-slate-400/70 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500/50 shadow-inner ${
                 errors.email
                   ? 'border-rose-500 focus:ring-rose-500/50'
-                  : 'border-white/20 focus:border-indigo-400'
+                  : 'border-white/15 hover:border-white/30 focus:border-red-500'
               }`}
               {...register('email')}
             />
@@ -125,27 +125,27 @@ export function LoginForm() {
 
         {/* Password Input */}
         <div className="space-y-1.5 text-left">
-          <label className="block text-xs font-medium text-slate-200">
+          <label className="block text-xs font-semibold text-slate-200 tracking-wide">
             Contraseña
           </label>
           <div className="relative flex items-center">
-            <div className="absolute left-3.5 text-slate-300 pointer-events-none">
+            <div className="absolute left-3.5 text-slate-400 pointer-events-none">
               <Lock className="w-4 h-4" />
             </div>
             <input
               type={showPassword ? 'text' : 'password'}
               placeholder="••••••••••••"
-              className={`w-full rounded-xl border bg-slate-950/40 backdrop-blur-md px-4 py-2.5 pl-10 pr-10 text-sm text-white placeholder-slate-400 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400/60 ${
+              className={`w-full rounded-2xl border bg-slate-950/45 backdrop-blur-xl px-4 py-3 pl-10 pr-10 text-sm text-white placeholder-slate-400/70 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500/50 shadow-inner ${
                 errors.password
                   ? 'border-rose-500 focus:ring-rose-500/50'
-                  : 'border-white/20 focus:border-indigo-400'
+                  : 'border-white/15 hover:border-white/30 focus:border-red-500'
               }`}
               {...register('password')}
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3.5 text-slate-300 hover:text-white transition-colors focus:outline-none"
+              className="absolute right-3.5 text-slate-400 hover:text-white transition-colors focus:outline-none"
             >
               {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
             </button>
@@ -157,12 +157,12 @@ export function LoginForm() {
 
         {/* Remember me & Forgot Password */}
         <div className="flex items-center justify-between pt-1 text-xs">
-          <label className="flex items-center space-x-2 cursor-pointer select-none">
+          <label className="flex items-center space-x-2.5 cursor-pointer select-none">
             <input
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              className="w-4 h-4 rounded border-white/30 text-indigo-500 focus:ring-indigo-400 bg-slate-900/60 transition-colors"
+              className="w-4 h-4 rounded-md border-white/20 text-red-600 focus:ring-red-500 bg-slate-950/50 transition-colors cursor-pointer"
             />
             <span className="text-slate-200 font-medium">Recordarme</span>
           </label>
@@ -173,7 +173,7 @@ export function LoginForm() {
               e.preventDefault();
               alert('Contacta al administrador para restablecer tu contraseña.');
             }}
-            className="text-indigo-300 hover:text-white hover:underline font-semibold transition-colors"
+            className="text-red-300 hover:text-white hover:underline font-semibold transition-colors"
           >
             ¿Olvidaste tu contraseña?
           </a>
@@ -183,10 +183,10 @@ export function LoginForm() {
         <div className="pt-2">
           <motion.button
             type="submit"
-            whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
+            whileHover={{ scale: isSubmitting ? 1 : 1.015 }}
             whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
             disabled={isSubmitting}
-            className="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-semibold text-sm shadow-lg shadow-indigo-600/40 flex items-center justify-center space-x-2 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400/60 disabled:opacity-50"
+            className="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 hover:from-red-500 hover:to-rose-600 text-white font-bold text-sm shadow-[0_4px_25px_rgba(225,29,72,0.45)] flex items-center justify-center space-x-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-400 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center space-x-2">
@@ -207,9 +207,9 @@ export function LoginForm() {
       </form>
 
       {/* Divider */}
-      <div className="relative flex items-center justify-center my-4">
-        <div className="w-full border-t border-white/20" />
-        <span className="absolute bg-slate-900/80 backdrop-blur-md px-3 text-[11px] font-medium text-slate-300 rounded-full">
+      <div className="relative flex items-center justify-center my-5">
+        <div className="w-full border-t border-white/15" />
+        <span className="absolute bg-slate-950/70 backdrop-blur-xl px-3 py-0.5 text-[11px] font-medium text-slate-300 rounded-full border border-white/10">
           o continúa con
         </span>
       </div>
@@ -220,7 +220,7 @@ export function LoginForm() {
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.98 }}
         onClick={() => alert('Autenticación con Google disponible para dominio @univalle.edu.bo')}
-        className="w-full py-2.5 px-4 rounded-xl border border-white/20 bg-slate-900/40 hover:bg-slate-900/60 backdrop-blur-md text-white font-medium text-sm flex items-center justify-center space-x-2.5 transition-all shadow-sm focus:outline-none"
+        className="w-full py-3 px-4 rounded-2xl border border-white/20 bg-white/[0.07] hover:bg-white/[0.14] backdrop-blur-xl text-white font-semibold text-sm flex items-center justify-center space-x-2.5 transition-all duration-300 shadow-md focus:outline-none"
       >
         <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
           <path
