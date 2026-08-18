@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { motion } from 'framer-motion';
 import { Sidebar } from './sidebar';
 import { Topbar } from './topbar';
 
@@ -21,7 +22,8 @@ export function AppShell({
   title,
   subtitle,
 }: AppShellProps) {
-  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+  const [isMobileOpen, setIsMobileOpen] = React.useState(false);
+  const [isCollapsed, setIsCollapsed] = React.useState(false);
 
   return (
     <div className="min-h-screen w-full bg-slate-950 text-slate-100 font-sans relative overflow-x-hidden selection:bg-red-500 selection:text-white">
@@ -31,16 +33,31 @@ export function AppShell({
 
       {/* Sidebar Navigation */}
       <Sidebar
-        isOpen={sidebarOpen}
-        onClose={() => setSidebarOpen(false)}
+        isMobileOpen={isMobileOpen}
+        onMobileClose={() => setIsMobileOpen(false)}
+        isCollapsed={isCollapsed}
+        onToggleCollapse={() => setIsCollapsed(!isCollapsed)}
         user={user}
       />
 
-      {/* Main Content Area (Offset by Sidebar width on Desktop) */}
-      <div className="lg:pl-72 flex flex-col min-h-screen transition-all duration-300">
+      {/* Main Content Area (Fluid Framer Motion Padding Animation on Desktop) */}
+      <motion.div
+        animate={{
+          paddingLeft: typeof window !== 'undefined' && window.innerWidth >= 1024 ? (isCollapsed ? 80 : 280) : 0,
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 300,
+          damping: 32,
+          mass: 0.8,
+        }}
+        className="flex flex-col min-h-screen transition-all duration-300"
+      >
         {/* Topbar */}
         <Topbar
-          onMenuClick={() => setSidebarOpen(true)}
+          onMobileMenuClick={() => setIsMobileOpen(true)}
+          isCollapsed={isCollapsed}
+          onToggleCollapse={() => setIsCollapsed(!isCollapsed)}
           title={title}
           subtitle={subtitle}
         />
@@ -59,7 +76,7 @@ export function AppShell({
             <span className="hover:text-white transition-colors cursor-pointer">Sistema v2.1.0</span>
           </div>
         </footer>
-      </div>
+      </motion.div>
     </div>
   );
 }
