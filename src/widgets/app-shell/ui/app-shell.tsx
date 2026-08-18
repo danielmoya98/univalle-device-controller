@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { motion } from 'framer-motion';
 import { Sidebar } from './sidebar';
 import { Topbar } from './topbar';
 
@@ -40,18 +39,11 @@ export function AppShell({
         user={user}
       />
 
-      {/* Main Content Area (Fluid Framer Motion Padding Animation on Desktop) */}
-      <motion.div
-        animate={{
-          paddingLeft: typeof window !== 'undefined' && window.innerWidth >= 1024 ? (isCollapsed ? 80 : 280) : 0,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 300,
-          damping: 32,
-          mass: 0.8,
-        }}
-        className="flex flex-col min-h-screen transition-all duration-300"
+      {/* Main Content Area (Hardware-accelerated CSS Smooth Transition for Desktop Margin/Padding) */}
+      <div
+        className={`flex flex-col min-h-screen transition-[padding] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+          isCollapsed ? 'lg:pl-20' : 'lg:pl-72'
+        }`}
       >
         {/* Topbar */}
         <Topbar
@@ -63,7 +55,7 @@ export function AppShell({
         />
 
         {/* Page Main Content */}
-        <main className="flex-1 p-4 md:p-8 space-y-8 z-10 max-w-[1600px] w-full mx-auto">
+        <main className="flex-1 p-4 md:p-8 space-y-8 z-10 max-w-[1600px] w-full mx-auto overflow-hidden">
           {children}
         </main>
 
@@ -76,7 +68,7 @@ export function AppShell({
             <span className="hover:text-white transition-colors cursor-pointer">Sistema v2.1.0</span>
           </div>
         </footer>
-      </motion.div>
+      </div>
     </div>
   );
 }

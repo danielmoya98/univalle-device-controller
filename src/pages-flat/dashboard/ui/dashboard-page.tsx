@@ -6,7 +6,6 @@ import {
   Card,
   DonutChart,
   AreaChart,
-  Badge,
   Table,
   TableHead,
   TableRow,
@@ -206,7 +205,7 @@ export function DashboardPage({ user }: DashboardPageProps) {
       {/* Analytics Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Category Donut Chart */}
-        <Card className="p-6 rounded-3xl border border-white/15 bg-white/[0.06] dark:bg-slate-900/[0.45] backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
+        <Card className="p-6 rounded-3xl border border-white/15 bg-white/[0.06] dark:bg-slate-900/[0.45] backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] overflow-hidden">
           <div className="flex items-center justify-between pb-4 border-b border-white/10">
             <h3 className="text-sm font-bold text-white">Dispositivos por Categoría</h3>
             <span className="text-xs font-semibold text-slate-400 bg-white/10 px-2.5 py-1 rounded-xl">
@@ -229,7 +228,7 @@ export function DashboardPage({ user }: DashboardPageProps) {
               {categoryData.map((cat, i) => (
                 <div key={cat.name} className="flex items-center justify-between text-slate-300">
                   <div className="flex items-center space-x-2">
-                    <span className={`w-2.5 h-2.5 rounded-full bg-${chartColors[i]}-500`} />
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
                     <span>{cat.name}</span>
                   </div>
                   <span className="font-bold text-white">{cat.count}</span>
@@ -240,7 +239,7 @@ export function DashboardPage({ user }: DashboardPageProps) {
         </Card>
 
         {/* Device Status Area Chart */}
-        <Card className="p-6 rounded-3xl border border-white/15 bg-white/[0.06] dark:bg-slate-900/[0.45] backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
+        <Card className="p-6 rounded-3xl border border-white/15 bg-white/[0.06] dark:bg-slate-900/[0.45] backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] overflow-hidden">
           <div className="flex items-center justify-between pb-4 border-b border-white/10">
             <h3 className="text-sm font-bold text-white">Estado de Dispositivos</h3>
             <span className="text-xs font-semibold text-slate-400 bg-white/10 px-2.5 py-1 rounded-xl">
@@ -249,12 +248,29 @@ export function DashboardPage({ user }: DashboardPageProps) {
           </div>
 
           <div className="pt-4">
+            {/* Custom Clean Legend Row */}
+            <div className="flex items-center justify-around text-xs pb-3 border-b border-white/5">
+              <div className="flex items-center space-x-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                <span className="text-slate-300 font-semibold">Activos</span>
+              </div>
+              <div className="flex items-center space-x-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                <span className="text-slate-300 font-semibold">Mantenimiento</span>
+              </div>
+              <div className="flex items-center space-x-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
+                <span className="text-slate-300 font-semibold">Fuera de servicio</span>
+              </div>
+            </div>
+
             <AreaChart
-              className="h-56"
+              className="h-44 mt-3"
               data={areaChartData}
               index="date"
               categories={['Activos', 'Mantenimiento', 'Fuera de servicio']}
               colors={['emerald', 'amber', 'rose']}
+              showLegend={false}
               showAnimation
               showGridLines={false}
               curveType="natural"
@@ -263,14 +279,14 @@ export function DashboardPage({ user }: DashboardPageProps) {
         </Card>
 
         {/* Recent Alerts List */}
-        <Card className="p-6 rounded-3xl border border-white/15 bg-white/[0.06] dark:bg-slate-900/[0.45] backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] flex flex-col justify-between">
+        <Card className="p-6 rounded-3xl border border-white/15 bg-white/[0.06] dark:bg-slate-900/[0.45] backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] flex flex-col justify-between overflow-hidden">
           <div>
             <div className="flex items-center justify-between pb-4 border-b border-white/10">
               <h3 className="text-sm font-bold text-white">Alertas Recientes</h3>
               <button className="text-xs font-semibold text-red-400 hover:underline">Ver todas</button>
             </div>
 
-            <div className="space-y-3.5 pt-4">
+            <div className="space-y-3 pt-4">
               <div className="p-3 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-start space-x-3">
                 <ShieldAlert className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
                 <div className="text-xs">
@@ -306,14 +322,14 @@ export function DashboardPage({ user }: DashboardPageProps) {
             </div>
           </div>
 
-          <button className="w-full text-center text-xs font-semibold text-red-400 hover:text-red-300 pt-4 border-t border-white/10">
+          <button className="w-full text-center text-xs font-semibold text-red-400 hover:text-red-300 pt-4 border-t border-white/10 mt-3">
             Ver todas las alertas →
           </button>
         </Card>
       </div>
 
       {/* Dispositivos Recientes Table */}
-      <Card className="p-6 rounded-3xl border border-white/15 bg-white/[0.06] dark:bg-slate-900/[0.45] backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
+      <Card className="p-6 rounded-3xl border border-white/15 bg-white/[0.06] dark:bg-slate-900/[0.45] backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] overflow-hidden">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
           <div>
             <h3 className="text-base font-bold text-white">Dispositivos Recientes</h3>
@@ -323,7 +339,7 @@ export function DashboardPage({ user }: DashboardPageProps) {
           <button
             type="button"
             onClick={() => alert('Función de agregar dispositivo')}
-            className="py-2 px-4 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-xs shadow-lg shadow-red-600/30 flex items-center space-x-1.5 transition-all"
+            className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#7A001E] via-[#990024] to-[#7A001E] hover:from-[#600018] hover:to-[#800020] text-white font-bold text-xs shadow-lg shadow-red-900/40 flex items-center space-x-1.5 transition-all border border-white/20"
           >
             <Plus className="w-4 h-4" />
             <span>Agregar dispositivo</span>
